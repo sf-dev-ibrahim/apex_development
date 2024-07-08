@@ -1,3 +1,6 @@
+/*
+ * Author - Ibrahim Ahmed
+*/
 public class SaleTriggerHandler extends TriggerHandler {
     private Map<Id, Sale__c> newSaleMap;
     private List<Sale__c> newSales;

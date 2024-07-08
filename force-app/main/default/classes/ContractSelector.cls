@@ -1,3 +1,6 @@
+/*
+ * Author - Ibrahim Ahmed
+*/
 public class ContractSelector {
     public static List<Contract> getContractAndTimingsByStationIds(Set<Id> stationIds){
         return [

@@ -1,3 +1,6 @@
+/*
+ * Author - Ibrahim Ahmed
+*/
 public class GasStationSelector {
     public static List<Gas_Station__c> getStaionsByExternalIds (Set<String> externalIds){
         return [

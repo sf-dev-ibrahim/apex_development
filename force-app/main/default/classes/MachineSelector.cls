@@ -1,3 +1,6 @@
+/*
+ * Author - Ibrahim Ahmed
+*/
 public class MachineSelector {
     public static List<Machine__c> getMachinesByMachineNumbers (Set<String> machineNumbers){
         return [

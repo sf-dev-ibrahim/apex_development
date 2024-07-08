@@ -1,3 +1,6 @@
+/*
+ * Author - Ibrahim Ahmed
+*/
 public virtual class TriggerHandler {
 
   // static map of handlername, times run() was invoked

@@ -1,3 +1,6 @@
+/*
+ * Author - Ibrahim Ahmed
+*/
 public with sharing class TransactionTriggerHandler extends TriggerHandler {
     
     public override void beforeInsert (){

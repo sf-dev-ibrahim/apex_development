@@ -1,3 +1,6 @@
+/*
+ * Author - Ibrahim Ahmed
+*/
 @RestResource(urlMapping='/WebService/Sales/*')
 global with sharing class WebServiceSales {
 
