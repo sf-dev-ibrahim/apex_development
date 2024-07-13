@@ -22,6 +22,7 @@ public class SaleTriggerHandler extends TriggerHandler {
         Set<String> externalStationIds = new Set<String>();
         Set<Id> stationIds = new Set<Id>();
         Set<String> machineNumbers = new Set<String>();
+        Integer currentQuarter = (Date.today().month() -1)/3+1;
 
         //Logic to prepare SalesByStation Map
         for (Sale__c sale: this.newSales){
@@ -93,7 +94,7 @@ public class SaleTriggerHandler extends TriggerHandler {
                 ){
                     Date startDate = Date.today();
                     Date createdDate = Sale.External_Created_Date__c.date();
-                    Integer diffInDays = createdDate.daysBetween(startDate);
+                    //Integer diffInDays = createdDate.daysBetween(startDate);
                     Timezone tz = Timezone.getTimeZone('GMT-07:00');
                     DateTime dt = Sale.External_Created_Date__c;
                     dt.addSeconds((tz.getOffset(dt)/1000));
@@ -121,11 +122,23 @@ public class SaleTriggerHandler extends TriggerHandler {
                     } else if (machineByCredit.get(sale.Machine_Number__c) != null){
                         sale.Machine__c = machineByCredit.get(sale.Machine_Number__c).Id;
                     }
-                    System.debug('### Diff In Days :'+diffInDays);
-                    if (diffInDays <= 90){
+                    //System.debug('### Diff In Days :'+diffInDays);
+                    /*if (diffInDays <= 90){
                         sale.Sale_Quarter__c = 'THIS_QUARTER';
                     } else if (diffInDays <= 180){
                         sale.Sale_Quarter__c = 'PREVIOUS_QUARTER';
+                    } else {
+                        sale.Sale_Quarter__c = 'OLD';
+                    }*/
+                    if (createdDate.year() == Date.today().year()){
+                        Integer quarterDate = (createdDate.month()-1)/3+1;
+                        if (quarterDate == currentQuarter){
+                            sale.Sale_Quarter__c = 'THIS_QUARTER';
+                        } else if (quarterDate == (currentQuarter-1)){
+                            sale.Sale_Quarter__c = 'PREVIOUS_QUARTER';
+                        } else {
+                            sale.Sale_Quarter__c = 'OLD';
+                        }
                     } else {
                         sale.Sale_Quarter__c = 'OLD';
                     }
