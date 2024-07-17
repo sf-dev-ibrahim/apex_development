@@ -9,12 +9,10 @@ private class TestWebServiceTransactions {
         // Create Machines for testing
         List<Machine__c> machines = new List<Machine__c>();
         machines.add(new Machine__c(
-            Name = 'Machine 1',
             Cash_and_Credit__c = 'Device123',
             Credit__c = 'Credit123'
         ));
         machines.add(new Machine__c(
-            Name = 'Machine 2',
             Cash_and_Credit__c = 'Device456',
             Credit__c = 'Credit456'
         ));
